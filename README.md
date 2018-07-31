@@ -1,21 +1,31 @@
 # InspectVars
 
-**TODO: Add description**
+Macro for debugging, quickly see the current value of multiple variables, printed pretty with the var names in front
+```
+iex> game = [10, 9, 8]
+...> p1 = 1
+...> p2 = 2
+...> InspectVars.inspect([game, p1, p2])
+game: [10, 9, 8]
+p1: 1
+p2: 2
+```
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `inspect_vars` to your list of dependencies in `mix.exs`:
+Add :inspect_vars in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:inspect_vars, "~> 0.1.0"}
+    {:inspect_vars, git: "https://github.com/Jwashton/inspectVars"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/inspect_vars](https://hexdocs.pm/inspect_vars).
+In the file where you want to debug, just add a line where you'd like the "breakpoint":
+```elixir
+    require InspectVars; InspectVars.inspect([vars])
+```
 
+Replace `vars` with a comma-seperated list of the variables you'd like to see the values of! :)
